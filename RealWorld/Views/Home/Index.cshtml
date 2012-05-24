@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+@model RealWorld.Models.Credentials
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Real World App</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/modernizr-2.0.6-development-only.js")" type="text/javascript"></script>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <header>
+        <div class="content-wrapper">       
+            <div class="float-left">
+                <p class="site-title"><a href="/">Real World Business App</a></p>
+            </div>
+        </div>
+    </header>
+    <div id="body">
+        <section class="featured">
+            <div class="content-wrapper">
+                <hgroup class="title">
+                    <h1>Welcome to the Real World sample business app!</h1>
+                    <h2>This sample code is intended to show some of the characteristics of the REST architectural style.</h2>
+                </hgroup>
+                <p>
+                    The term REST has suffered the fate of instant buzzword fame in the software development world. 
+                </p>
+            </div>
+        </section>
+        <section class="content-wrapper main-content clear-fix">
+            <h3>Please login to our application:</h3>
+            <br/>
+            @using (Html.BeginForm("SignIn", "Home"))
+            {
+                <ol class="round">
+                    <li>User Name: @Html.TextBox("UserName")</li>
+                    <li>Password: @Html.Password("Password")</li>
+                </ol>
+                <input type="submit" value="Sign In"/>
+            }
+        </section>
+    </div>
+</body>
+</html>
