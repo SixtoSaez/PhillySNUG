@@ -208,7 +208,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Signin.cshtml" />
+    <Content Include="Views\Home\SignedIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\SomeProcess\Index.cshtml" />

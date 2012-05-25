@@ -13,7 +13,7 @@ namespace RealWorld.Controllers
         }
 
         [HttpPost]
-        public ActionResult Signin(Credentials credentials)
+        public ActionResult SignedIn(Credentials credentials)
         {
             //TODO: please use a real and secure authentication scheme!!
             credentials.Password = null;
