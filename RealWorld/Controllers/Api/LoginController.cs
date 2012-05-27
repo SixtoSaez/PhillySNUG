@@ -5,7 +5,7 @@ using System.Web.Http;
 using RealWorld.Application;
 using RealWorld.Models;
 
-namespace RealWorld.Controllers
+namespace RealWorld.Controllers.Api
 {
     public class LoginController : ApiController
     {
@@ -19,7 +19,7 @@ namespace RealWorld.Controllers
         public HttpResponseMessage Post(Credentials credentials)
         {
             //TODO: please use a real and secure authentication scheme!!
-            credentials.Password = "IsSignedSoWeDon'tWantToEchoIt";
+            credentials.Password = "IsSignedInSoWeDon'tWantToEchoIt";
           
             var message = new HttpResponseMessage<Credentials>(credentials, HttpStatusCode.OK);
             

@@ -121,9 +121,10 @@
   <ItemGroup>
     <Compile Include="Application\Cookies.cs" />
     <Compile Include="Application\WebAuthorize.cs" />
+    <Compile Include="Controllers\Api\SomeProcessController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SomeProcessController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\Api\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
