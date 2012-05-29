@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using RealWorld.Application;
 using RealWorld.Models;
@@ -10,18 +11,33 @@ namespace RealWorld.Controllers.Rest
     public class LoginWithLinksController : ApiController
     {
         // GET /api/login
-        public Credentials Get()
+        public LinkedCredentials Get()
         {
-            return new Credentials();
+            const string linkUrl = "~/api/login";
+
+            var requestUrl = HttpContext.Current.Request.Url;
+            var responseUrl = String.Format("{0}://{1}{2}",
+               requestUrl.Scheme, requestUrl.Host, VirtualPathUtility.ToAbsolute(linkUrl));
+
+            return new LinkedCredentials
+                       {
+                           Links = new[] {new AppLink
+                                              {
+                                                  Description = "Login URI for authentication",
+                                                  Href = responseUrl,
+                                                  Method = "POST",
+                                                  Rel = "SignIn"
+                                              }}
+                       };
         }
 
         // POST /api/login
-        public HttpResponseMessage Post(Credentials credentials)
+        public HttpResponseMessage Post(LinkedCredentials credentials)
         {
             //TODO: please use a real and secure authentication scheme!!
             credentials.Password = "IsSignedInWithLinking";
           
-            var message = new HttpResponseMessage<Credentials>(credentials, HttpStatusCode.OK);
+            var message = new HttpResponseMessage<LinkedCredentials>(credentials, HttpStatusCode.OK);
             
             //For demo purposes only: don't this at home!!!
             var authCookie = Cookies.CreateAuthCookie();

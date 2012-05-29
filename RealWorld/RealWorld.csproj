@@ -132,6 +132,9 @@
     </Compile>
     <Compile Include="Models\Credentials.cs" />
     <Compile Include="Models\BizProcessStatus.cs" />
+    <Compile Include="Models\AppLink.cs" />
+    <Compile Include="Models\LinkedBizProcessStatus.cs" />
+    <Compile Include="Models\LinkedCredentials.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
