@@ -6,12 +6,25 @@ namespace RealWorld.Controllers.Rest
 {
     public class SomeProcessWithLinksController : ApiController
     {
-        public BizProcessStatus Get()
+        public LinkedBizProcessStatus Get()
         {
-            return new BizProcessStatus
+            return new LinkedBizProcessStatus
                        {
                            Status = "All is B2B good with linking",
-                           ProcessingDetails = new List<string> { "this detail link", "that detail link"}
+                           ProcessingDetails = new List<AppLink> {
+                               new AppLink {
+                                   Description = "this detail link",
+                                   Href="http://somevalidhost/rest/processResource/1",
+                                   Method="GET",
+                                   Rel="self"
+                               },
+                               new AppLink {
+                                   Description = "that detail link",
+                                   Href="http://somevalidhost/rest/processResource/2",
+                                   Method="GET",
+                                   Rel="self"
+                               }
+                           }
                        };
         }
     }

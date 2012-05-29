@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Http;
 using RealWorld.Application;
 using RealWorld.Models;
+using System.Collections.Generic;
 
 namespace RealWorld.Controllers.Rest
 {
@@ -13,11 +14,8 @@ namespace RealWorld.Controllers.Rest
         // GET /api/login
         public LinkedCredentials Get()
         {
-            const string linkUrl = "~/api/login";
-
-            var requestUrl = HttpContext.Current.Request.Url;
-            var responseUrl = String.Format("{0}://{1}{2}",
-               requestUrl.Scheme, requestUrl.Host, VirtualPathUtility.ToAbsolute(linkUrl));
+            const string linkUrl = "~/api/loginwithlinks";
+            var responseUrl = GetAbsoluteLink(linkUrl);
 
             return new LinkedCredentials
                        {
@@ -36,6 +34,14 @@ namespace RealWorld.Controllers.Rest
         {
             //TODO: please use a real and secure authentication scheme!!
             credentials.Password = "IsSignedInWithLinking";
+            const string linkUrl = "~/api/someprocesswithlinks";
+            credentials.Links = new List<AppLink>{
+                new AppLink{ 
+                    Description="Some Process available to this login",
+                    Href = linkUrl,
+                    Method="GET",
+                    Rel="TriggerSomeProcess"
+            }};
           
             var message = new HttpResponseMessage<LinkedCredentials>(credentials, HttpStatusCode.OK);
             
@@ -50,6 +56,15 @@ namespace RealWorld.Controllers.Rest
                 DateTime.UtcNow.AddMinutes(10)));
 
             return message;
+        }
+
+        private static string GetAbsoluteLink(string linkUrl)
+        {
+
+            var requestUrl = HttpContext.Current.Request.Url;
+            var responseUrl = String.Format("{0}://{1}{2}",
+               requestUrl.Scheme, requestUrl.Host, VirtualPathUtility.ToAbsolute(linkUrl));
+            return responseUrl;
         }
 
         // PUT /api/login/5 ** Not applicable to this resource
