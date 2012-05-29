@@ -25,6 +25,12 @@ namespace RealWorld
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            routes.MapHttpRoute(
+                name: "DefaultRest",
+                routeTemplate: "rest/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
             routes.MapRoute(
                 name: "Error",
                 url: "Error/{returnUrl}",
