@@ -42,9 +42,9 @@ namespace RealWorld.Controllers.Rest
                     Method="GET",
                     Rel="TriggerSomeProcess"
             }};
-          
+
             var message = new HttpResponseMessage<LinkedCredentials>(credentials, HttpStatusCode.OK);
-            
+
             //For demo purposes only: don't this at home!!!
             var authCookie = Cookies.CreateAuthCookie();
             const string setCookie = "{0}={1}; expires={2:ddd, dd MMM yyyy} {3:HH:mm:ss} GMT; path=/";
@@ -62,11 +62,23 @@ namespace RealWorld.Controllers.Rest
         {
 
             var requestUrl = HttpContext.Current.Request.Url;
-            var responseUrl = String.Format("{0}://{1}:{2}{3}",
-               requestUrl.Scheme,
-               requestUrl.Host,
-               requestUrl.Port,
-               VirtualPathUtility.ToAbsolute(linkUrl));
+            string responseUrl;
+            if (requestUrl.Host.StartsWith("localhost", StringComparison.CurrentCultureIgnoreCase))
+            {
+                //Only add port for localhost:
+                responseUrl = String.Format("{0}://{1}:{2}{3}",
+                    requestUrl.Scheme,
+                    requestUrl.Host,
+                    requestUrl.Port,
+                    VirtualPathUtility.ToAbsolute(linkUrl));
+            }
+            else
+            {
+                responseUrl = String.Format("{0}://{1}{2}",
+                    requestUrl.Scheme,
+                    requestUrl.Host,
+                    VirtualPathUtility.ToAbsolute(linkUrl));
+            }
             return responseUrl;
         }
 
