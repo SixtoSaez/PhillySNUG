@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
+using RealWorld.Application;
 using RealWorld.Models;
 
 namespace RealWorld.Controllers.Rest
 {
+    [ApiAuthorize]
     public class SomeProcessWithLinksController : ApiController
     {
         public LinkedBizProcessStatus Get()

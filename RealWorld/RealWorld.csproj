@@ -119,6 +119,7 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\ApiAuthorize.cs" />
     <Compile Include="Application\Cookies.cs" />
     <Compile Include="Application\WebAuthorize.cs" />
     <Compile Include="Controllers\Api\SomeProcessController.cs" />
