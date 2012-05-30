@@ -14,7 +14,7 @@ namespace RealWorld.Controllers.Rest
         // GET /api/login
         public LinkedCredentials Get()
         {
-            const string linkUrl = "~/api/loginwithlinks";
+            const string linkUrl = "~/rest/loginwithlinks";
             var responseUrl = GetAbsoluteLink(linkUrl);
 
             return new LinkedCredentials
@@ -34,11 +34,11 @@ namespace RealWorld.Controllers.Rest
         {
             //TODO: please use a real and secure authentication scheme!!
             credentials.Password = "IsSignedInWithLinking";
-            const string linkUrl = "~/api/someprocesswithlinks";
+            const string linkUrl = "~/rest/someprocesswithlinks";
             credentials.Links = new List<AppLink>{
                 new AppLink{ 
                     Description="Some Process available to this login",
-                    Href = linkUrl,
+                    Href = GetAbsoluteLink(linkUrl),
                     Method="GET",
                     Rel="TriggerSomeProcess"
             }};
@@ -62,8 +62,11 @@ namespace RealWorld.Controllers.Rest
         {
 
             var requestUrl = HttpContext.Current.Request.Url;
-            var responseUrl = String.Format("{0}://{1}{2}",
-               requestUrl.Scheme, requestUrl.Host, VirtualPathUtility.ToAbsolute(linkUrl));
+            var responseUrl = String.Format("{0}://{1}:{2}{3}",
+               requestUrl.Scheme,
+               requestUrl.Host,
+               requestUrl.Port,
+               VirtualPathUtility.ToAbsolute(linkUrl));
             return responseUrl;
         }
 
