@@ -4,11 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Content/css")" rel="stylesheet" type="text/css" />
-    <link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Content/themes/base/css")" rel="stylesheet" type="text/css" />
-    <script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Scripts/js")"></script>
+    @using System.Web.Optimization
+    @Styles.Render("~/Content/Site.css", "~/Content/themes/base/css", "~/Content/css")
 </head>
 <body>
     @RenderBody()
+    @Scripts.Render("~/Scripts/jquery")
+    @Scripts.Render("~/Scripts/knockout")
+    @Scripts.Render("~/Scripts/modernizr")
+    @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -115,6 +115,7 @@
     <Compile Include="Application\ApiAuthorize.cs" />
     <Compile Include="Application\Cookies.cs" />
     <Compile Include="Application\WebAuthorize.cs" />
+    <Compile Include="BundleConfig.cs" />
     <Compile Include="Controllers\Api\SomeProcessController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Rest\LoginWithLinksController.cs" />
