@@ -4,6 +4,9 @@ using RealWorld.Models;
 
 namespace RealWorld.Controllers
 {
+    /// <summary>
+    /// The HTML based home page (resource)
+    /// </summary>
     public class HomeController : Controller
     {
         public ActionResult Index()

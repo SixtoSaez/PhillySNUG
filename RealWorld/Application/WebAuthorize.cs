@@ -3,6 +3,9 @@ using System.Web.Mvc;
 
 namespace RealWorld.Application
 {
+    /// <summary>
+    /// Authorization logic for the ASP.NET Web API side of the application
+    /// </summary>
     public class WebAuthorize : FilterAttribute, IAuthorizationFilter
     {
         public void OnAuthorization(AuthorizationContext filterContext)

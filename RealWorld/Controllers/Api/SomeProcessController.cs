@@ -1,9 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
+using RealWorld.Application;
 using RealWorld.Models;
 
 namespace RealWorld.Controllers.Api
 {
+    /// <summary>
+    /// Gets the status of the business process and provides static details
+    /// </summary>
+    [ApiAuthorize]
     public class SomeProcessController : ApiController
     {
         public BizProcessStatus Get()

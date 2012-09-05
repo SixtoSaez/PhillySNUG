@@ -7,6 +7,9 @@ using System.Web.Http.Controllers;
 
 namespace RealWorld.Application
 {
+    /// <summary>
+    /// Authorization logic for the ASP.NET MVC 4 side of the application
+    /// </summary>
     public class ApiAuthorize : AuthorizeAttribute
     {
         /*

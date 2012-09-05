@@ -5,6 +5,10 @@ using RealWorld.Models;
 
 namespace RealWorld.Controllers.Rest
 {
+    /// <summary>
+    /// Gets the status of the business process and provides details
+    /// with access to the specific detail resources
+    /// </summary>
     [ApiAuthorize]
     public class SomeProcessWithLinksController : ApiController
     {
