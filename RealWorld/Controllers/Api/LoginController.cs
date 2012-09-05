@@ -20,8 +20,11 @@ namespace RealWorld.Controllers.Api
         {
             //TODO: please use a real and secure authentication scheme!!
             credentials.Password = "IsSignedInSoWeDon'tWantToEchoIt";
-          
-            var message = new HttpResponseMessage<Credentials>(credentials, HttpStatusCode.OK);
+
+            var message = new HttpResponseMessage(HttpStatusCode.OK);
+            message.Content = new ObjectContent<Credentials>(
+                credentials,
+                GlobalConfiguration.Configuration.Formatters.JsonFormatter);
             
             //For demo purposes only: don't this at home!!!
             var authCookie = Cookies.CreateAuthCookie();

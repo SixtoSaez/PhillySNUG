@@ -1,8 +1,8 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
-using System.Web.Http.Common;
 using System.Web.Http.Controllers;
 
 namespace RealWorld.Application
@@ -24,7 +24,7 @@ namespace RealWorld.Application
         public override void OnAuthorization(HttpActionContext actionContext)
         {
             if (actionContext == null)
-                throw Error.ArgumentNull("actionContext");
+                throw new ArgumentNullException("actionContext");
 
             var request = actionContext.Request;
             if (request.Properties.ContainsKey("MS_HttpContext"))
@@ -42,7 +42,7 @@ namespace RealWorld.Application
         protected override void HandleUnauthorizedRequest(HttpActionContext actionContext)
         {
             if (actionContext == null)
-                throw Error.ArgumentNull("actionContext");
+                throw new ArgumentNullException("actionContext");
 
             actionContext.Response = CreateUnauthorizedResponse(actionContext.ControllerContext.Request);
         }

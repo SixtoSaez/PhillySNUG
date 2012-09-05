@@ -43,7 +43,10 @@ namespace RealWorld.Controllers.Rest
                     Rel="TriggerSomeProcess"
             }};
 
-            var message = new HttpResponseMessage<LinkedCredentials>(credentials, HttpStatusCode.OK);
+            var message = new HttpResponseMessage(HttpStatusCode.OK);
+            message.Content = new ObjectContent<LinkedCredentials>(
+                credentials,
+                GlobalConfiguration.Configuration.Formatters.JsonFormatter);
 
             //For demo purposes only: don't this at home!!!
             var authCookie = Cookies.CreateAuthCookie();
