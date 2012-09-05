@@ -18,8 +18,10 @@ namespace RealWorld
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);
-            RegisterMvcRoutes(RouteTable.Routes);
+
+            //Order is important the way the routes are configured. Web API goes first:
             RegisterWebApiRoutes(RouteTable.Routes);
+            RegisterMvcRoutes(RouteTable.Routes);
 
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
