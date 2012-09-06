@@ -24,7 +24,7 @@ namespace RealWorld
 
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         
-            // WebApi Configuration to hook up formatters and message handlers
+            // WebApi Configuration to configure formatters:
             RemoveUnneededMediaTypes(GlobalConfiguration.Configuration);
         }
 

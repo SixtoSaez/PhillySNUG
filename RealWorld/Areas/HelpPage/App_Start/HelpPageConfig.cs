@@ -47,9 +47,8 @@ namespace RealWorld.Areas.HelpPage
         {
             // JSON
             var mediaTypeHeaderValue = new MediaTypeHeaderValue("text/json");
-            var jsonMediaTypeFormatter = new JsonMediaTypeFormatter();
             var jsonResponse = config.GetHelpPageSampleGenerator().WriteSampleObjectUsingFormatter(
-                jsonMediaTypeFormatter,
+                new JsonMediaTypeFormatter(),
                 sample,
                 typeof(T),
                 mediaTypeHeaderValue);
@@ -59,10 +58,8 @@ namespace RealWorld.Areas.HelpPage
 
             // XML
             mediaTypeHeaderValue = new MediaTypeHeaderValue("text/xml");
-            var xmlMediaTypeFormatter = new XmlMediaTypeFormatter();
-
             var xmlResponse = config.GetHelpPageSampleGenerator().WriteSampleObjectUsingFormatter(
-                xmlMediaTypeFormatter,
+                new XmlMediaTypeFormatter(),
                 sample,
                 typeof(T),
                 mediaTypeHeaderValue);
