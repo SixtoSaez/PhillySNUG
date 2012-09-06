@@ -4,6 +4,12 @@
         <name>RealWorld</name>
     </assembly>
     <members>
+        <member name="T:RealWorld.Areas.Rest.Controllers.SomeProcessWithLinksController">
+            <summary>
+            Gets the status of the business process and provides details
+            with access to the specific detail resources
+            </summary>
+        </member>
         <member name="T:RealWorld.Areas.HelpPage.HelpPageSampleGenerator">
             <summary>
             This class will generate the samples for the help page.
@@ -179,6 +185,26 @@
             This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
             </summary>
         </member>
+        <member name="T:RealWorld.Areas.Rest.Controllers.LoginWithLinksController">
+            <summary>
+            Entry point in the Web API application. Provides for authentication
+            and basic application information. Also, returns possible actions (links)
+            the client application (user agent) can trigger
+            </summary>
+        </member>
+        <member name="M:RealWorld.Areas.Rest.Controllers.LoginWithLinksController.Get">
+            <summary>
+            Entry point for the authentication process.
+            </summary>
+            <returns>An empty instance of the credential representation to be POSTed for authention with the appropriate URI</returns>
+        </member>
+        <member name="M:RealWorld.Areas.Rest.Controllers.LoginWithLinksController.Post(RealWorld.Areas.Rest.Models.LinkedCredentials)">
+            <summary>
+            Authentication end point to provide client application credentials
+            </summary>
+            <param name="credentials"></param>
+            <returns>HTTP Status 200 if credentials accepted and appropriate links for the next steps in the process or HTTP Status 401 if unathorized.</returns>
+        </member>
         <member name="T:RealWorld.Areas.HelpPage.Models.HelpPageApiModel">
             <summary>
             The model that represents an API displayed on the help page.
@@ -347,6 +373,45 @@
             An <see cref="T:RealWorld.Areas.HelpPage.Models.HelpPageApiModel"/>
             </returns>
         </member>
+        <member name="T:RealWorld.Areas.Rest.Models.LinkedCredentials">
+            <summary>
+            The representation of the application credentials resource
+            </summary>
+        </member>
+        <member name="P:RealWorld.Areas.Rest.Models.LinkedCredentials.UserName">
+            <summary>
+            User name registered for use by this API
+            </summary>
+        </member>
+        <member name="P:RealWorld.Areas.Rest.Models.LinkedCredentials.Password">
+            <summary>
+            The user password
+            </summary>
+        </member>
+        <member name="P:RealWorld.Areas.Rest.Models.LinkedCredentials.Links">
+            <summary>
+            The list of links to the potential next steps for this user
+            </summary>
+        </member>
+        <member name="T:RealWorld.Areas.Api.Controllers.LoginController">
+            <summary>
+            Entry point in the Web API application. Provides for authentication
+            and basic application information
+            </summary>
+        </member>
+        <member name="M:RealWorld.Areas.Api.Controllers.LoginController.Get">
+            <summary>
+            Entry point for the authentication process.
+            </summary>
+            <returns>An empty instance of the credential representation to be POSTed for authention</returns>
+        </member>
+        <member name="M:RealWorld.Areas.Api.Controllers.LoginController.Post(RealWorld.Models.Credentials)">
+            <summary>
+            Authentication end point to provide client application credentials
+            </summary>
+            <param name="credentials"></param>
+            <returns>HTTP Status 200 if credentials accepted or HTTP Status 401 if unathorized</returns>
+        </member>
         <member name="T:RealWorld.Areas.HelpPage.HelpPageConfig">
             <summary>
             Use this class to customize the Help Page.
@@ -357,6 +422,11 @@
         <member name="T:RealWorld.Areas.HelpPage.TextSample">
             <summary>
             This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:RealWorld.Areas.Api.Controllers.SomeProcessController">
+            <summary>
+            Gets the status of the business process and provides static details
             </summary>
         </member>
         <member name="T:RealWorld.Areas.HelpPage.SampleDirection">
@@ -419,50 +489,6 @@
             The controller that will handle requests for the help page.
             </summary>
         </member>
-        <member name="T:RealWorld.Areas.Api.Controllers.LoginController">
-            <summary>
-            Entry point in the Web API application. Provides for authentication
-            and basic application information
-            </summary>
-        </member>
-        <member name="M:RealWorld.Areas.Api.Controllers.LoginController.Get">
-            <summary>
-            Entry point for the authentication process.
-            </summary>
-            <returns>An empty instance of the credential representation to be POSTed for authention</returns>
-        </member>
-        <member name="M:RealWorld.Areas.Api.Controllers.LoginController.Post(RealWorld.Models.Credentials)">
-            <summary>
-            Authentication end point to provide client application credentials
-            </summary>
-            <param name="credentials"></param>
-            <returns>HTTP Status 200 if credentials accepted or HTTP Status 401 if unathorized</returns>
-        </member>
-        <member name="T:RealWorld.Areas.Api.Controllers.SomeProcessController">
-            <summary>
-            Gets the status of the business process and provides static details
-            </summary>
-        </member>
-        <member name="T:RealWorld.Areas.Rest.Models.LinkedCredentials">
-            <summary>
-            The representation of the application credentials resource
-            </summary>
-        </member>
-        <member name="P:RealWorld.Areas.Rest.Models.LinkedCredentials.UserName">
-            <summary>
-            User name registered for use by this API
-            </summary>
-        </member>
-        <member name="P:RealWorld.Areas.Rest.Models.LinkedCredentials.Password">
-            <summary>
-            The user password
-            </summary>
-        </member>
-        <member name="P:RealWorld.Areas.Rest.Models.LinkedCredentials.Links">
-            <summary>
-            The list of links to the potential next steps for this user
-            </summary>
-        </member>
         <member name="T:RealWorld.Areas.Rest.Models.AppLink">
             <summary>
             This is an example of a hypermedia "control" or affordance
@@ -487,32 +513,6 @@
             <summary>
             Optional short description of the link relationship
             </summary>
-        </member>
-        <member name="T:RealWorld.Areas.Rest.Controllers.SomeProcessWithLinksController">
-            <summary>
-            Gets the status of the business process and provides details
-            with access to the specific detail resources
-            </summary>
-        </member>
-        <member name="T:RealWorld.Areas.Rest.Controllers.LoginWithLinksController">
-            <summary>
-            Entry point in the Web API application. Provides for authentication
-            and basic application information. Also, returns possible actions (links)
-            the client application (user agent) can trigger
-            </summary>
-        </member>
-        <member name="M:RealWorld.Areas.Rest.Controllers.LoginWithLinksController.Get">
-            <summary>
-            Entry point for the authentication process.
-            </summary>
-            <returns>An empty instance of the credential representation to be POSTed for authention with the appropriate URI</returns>
-        </member>
-        <member name="M:RealWorld.Areas.Rest.Controllers.LoginWithLinksController.Post(RealWorld.Areas.Rest.Models.LinkedCredentials)">
-            <summary>
-            Authentication end point to provide client application credentials
-            </summary>
-            <param name="credentials"></param>
-            <returns>HTTP Status 200 if credentials accepted and appropriate links for the next steps in the process or HTTP Status 401 if unathorized.</returns>
         </member>
     </members>
 </doc>

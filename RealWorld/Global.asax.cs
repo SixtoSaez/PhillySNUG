@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Http;
+using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
@@ -21,6 +23,9 @@ namespace RealWorld
             RegisterMvcRoutes(RouteTable.Routes);
 
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        
+            // WebApi Configuration to hook up formatters and message handlers
+            RemoveUnneededMediaTypes(GlobalConfiguration.Configuration);
         }
 
         private static void RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -43,6 +48,18 @@ namespace RealWorld
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+        }
+
+        private static void RemoveUnneededMediaTypes(HttpConfiguration config)
+        {
+            // remove default forms url encoded handler
+            var matches = config.Formatters
+                .Where(f => f.SupportedMediaTypes.Any(
+                    m => m.MediaType.StartsWith("application/x-www-form-url")))
+                .ToList();
+
+            foreach (var match in matches)
+                config.Formatters.Remove(match);
         }
     }
 }

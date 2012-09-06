@@ -45,9 +45,9 @@ namespace RealWorld.Areas.HelpPage
             Action<object, MediaTypeHeaderValue> configAction,
             T sample)
         {
+            // JSON
             var mediaTypeHeaderValue = new MediaTypeHeaderValue("text/json");
             var jsonMediaTypeFormatter = new JsonMediaTypeFormatter();
-
             var jsonResponse = config.GetHelpPageSampleGenerator().WriteSampleObjectUsingFormatter(
                 jsonMediaTypeFormatter,
                 sample,
@@ -55,10 +55,9 @@ namespace RealWorld.Areas.HelpPage
                 mediaTypeHeaderValue);
 
             configAction(jsonResponse, mediaTypeHeaderValue);
+            configAction(jsonResponse, new MediaTypeHeaderValue("application/json"));
 
-            mediaTypeHeaderValue = new MediaTypeHeaderValue("application/json");
-            configAction(jsonResponse, mediaTypeHeaderValue);
-
+            // XML
             mediaTypeHeaderValue = new MediaTypeHeaderValue("text/xml");
             var xmlMediaTypeFormatter = new XmlMediaTypeFormatter();
 
@@ -69,9 +68,7 @@ namespace RealWorld.Areas.HelpPage
                 mediaTypeHeaderValue);
 
             configAction(xmlResponse, mediaTypeHeaderValue);
-
-            mediaTypeHeaderValue = new MediaTypeHeaderValue("application/xml");
-            configAction(xmlResponse, mediaTypeHeaderValue);
+            configAction(xmlResponse, new MediaTypeHeaderValue("application/xml"));
         }
 
         private static LinkedCredentials PostResponseLinkedCredentials()
