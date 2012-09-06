@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Http;
+using RealWorld.Areas.Rest.Models;
 using RealWorld.Models;
 
 namespace RealWorld.Areas.HelpPage

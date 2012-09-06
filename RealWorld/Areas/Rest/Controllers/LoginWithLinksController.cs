@@ -4,10 +4,10 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using RealWorld.Application;
-using RealWorld.Models;
+using RealWorld.Areas.Rest.Models;
 using System.Collections.Generic;
 
-namespace RealWorld.Controllers.Rest
+namespace RealWorld.Areas.Rest.Controllers
 {
     /// <summary>
     /// Entry point in the Web API application. Provides for authentication

@@ -5,7 +5,7 @@ using System.Web.Http;
 using RealWorld.Application;
 using RealWorld.Models;
 
-namespace RealWorld.Controllers.Api
+namespace RealWorld.Areas.Api.Controllers
 {
     /// <summary>
     /// Entry point in the Web API application. Provides for authentication

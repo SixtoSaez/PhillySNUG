@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RealWorld.Models
+namespace RealWorld.Areas.Rest.Models
 {
     public class LinkedBizProcessStatus
     {

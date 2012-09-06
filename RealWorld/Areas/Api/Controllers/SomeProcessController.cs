@@ -3,7 +3,7 @@ using System.Web.Http;
 using RealWorld.Application;
 using RealWorld.Models;
 
-namespace RealWorld.Controllers.Api
+namespace RealWorld.Areas.Api.Controllers
 {
     /// <summary>
     /// Gets the status of the business process and provides static details

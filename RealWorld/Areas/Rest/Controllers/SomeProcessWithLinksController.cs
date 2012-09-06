@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 using RealWorld.Application;
-using RealWorld.Models;
+using RealWorld.Areas.Rest.Models;
 
-namespace RealWorld.Controllers.Rest
+namespace RealWorld.Areas.Rest.Controllers
 {
     /// <summary>
     /// Gets the status of the business process and provides details

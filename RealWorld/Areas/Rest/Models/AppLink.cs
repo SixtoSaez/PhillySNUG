@@ -1,4 +1,4 @@
-﻿namespace RealWorld.Models
+﻿namespace RealWorld.Areas.Rest.Models
 {
     /// <summary>
     /// This is an example of a hypermedia "control" or affordance

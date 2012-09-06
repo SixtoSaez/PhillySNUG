@@ -1,5 +1,4 @@
-﻿using System.Web.Http;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
@@ -19,8 +18,6 @@ namespace RealWorld
 
             RegisterGlobalFilters(GlobalFilters.Filters);
 
-            //Order is important the way the routes are configured. Web API goes first:
-            RegisterWebApiRoutes(RouteTable.Routes);
             RegisterMvcRoutes(RouteTable.Routes);
 
             BundleConfig.RegisterBundles(BundleTable.Bundles);
@@ -45,21 +42,6 @@ namespace RealWorld
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
-        }
-
-        private static void RegisterWebApiRoutes(RouteCollection routes)
-        {
-            routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
-
-            routes.MapHttpRoute(
-                name: "DefaultRest",
-                routeTemplate: "rest/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
             );
         }
     }
