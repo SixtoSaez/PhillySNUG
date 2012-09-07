@@ -4,243 +4,10 @@
         <name>RealWorld</name>
     </assembly>
     <members>
-        <member name="T:RealWorld.Areas.Rest.Controllers.SomeProcessWithLinksController">
+        <member name="T:RealWorld.Areas.HelpPage.SampleDirection">
             <summary>
-            Gets the status of the business process and provides details
-            with access to the specific detail resources
+            Indicates whether the sample is used for request or response
             </summary>
-        </member>
-        <member name="T:RealWorld.Areas.HelpPage.HelpPageSampleGenerator">
-            <summary>
-            This class will generate the samples for the help page.
-            </summary>
-        </member>
-        <member name="M:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:RealWorld.Areas.HelpPage.HelpPageSampleGenerator"/> class.
-            </summary>
-        </member>
-        <member name="M:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
-            <summary>
-            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
-            </summary>
-            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
-            <returns>The samples keyed by media type.</returns>
-        </member>
-        <member name="M:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
-            <summary>
-            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
-            </summary>
-            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
-            <returns>The samples keyed by media type.</returns>
-        </member>
-        <member name="M:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,RealWorld.Areas.HelpPage.SampleDirection)">
-            <summary>
-            Gets the request or response body samples.
-            </summary>
-            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
-            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
-            <returns>The samples keyed by media type.</returns>
-        </member>
-        <member name="M:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,RealWorld.Areas.HelpPage.SampleDirection)">
-            <summary>
-            Search for samples that are provided directly through <see cref="P:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
-            </summary>
-            <param name="controllerName">Name of the controller.</param>
-            <param name="actionName">Name of the action.</param>
-            <param name="parameterNames">The parameter names.</param>
-            <param name="type">The CLR type.</param>
-            <param name="formatter">The formatter.</param>
-            <param name="mediaType">The media type.</param>
-            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
-            <returns>The sample that matches the parameters.</returns>
-        </member>
-        <member name="M:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
-            <summary>
-            Gets the sample object that will be serialized by the formatters. 
-            First, it will look at the <see cref="P:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create one using <see cref="T:RealWorld.Areas.HelpPage.ObjectGenerator"/>.
-            </summary>
-            <param name="type">The type.</param>
-            <returns>The sample object.</returns>
-        </member>
-        <member name="M:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},RealWorld.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
-            <summary>
-            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
-            </summary>
-            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
-            <param name="controllerName">Name of the controller.</param>
-            <param name="actionName">Name of the action.</param>
-            <param name="parameterNames">The parameter names.</param>
-            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
-            <param name="formatters">The formatters.</param>
-        </member>
-        <member name="M:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
-            <summary>
-            Writes the sample object using formatter.
-            </summary>
-            <param name="formatter">The formatter.</param>
-            <param name="value">The value.</param>
-            <param name="type">The type.</param>
-            <param name="mediaType">Type of the media.</param>
-            <returns></returns>
-        </member>
-        <member name="P:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
-            <summary>
-            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
-            </summary>
-        </member>
-        <member name="P:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
-            <summary>
-            Gets the objects that are used directly as samples for certain actions.
-            </summary>
-        </member>
-        <member name="P:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
-            <summary>
-            Gets the objects that are serialized as samples by the supported formatters.
-            </summary>
-        </member>
-        <member name="T:RealWorld.Areas.HelpPage.HelpPageSampleKey">
-            <summary>
-            This is used to identify the place where the sample should be applied.
-            </summary>
-        </member>
-        <member name="M:RealWorld.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
-            <summary>
-            Creates a new <see cref="T:RealWorld.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
-            </summary>
-            <param name="mediaType">The media type.</param>
-            <param name="type">The CLR type.</param>
-        </member>
-        <member name="M:RealWorld.Areas.HelpPage.HelpPageSampleKey.#ctor(RealWorld.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
-            <summary>
-            Creates a new <see cref="T:RealWorld.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:RealWorld.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
-            </summary>
-            <param name="sampleDirection">The <see cref="P:RealWorld.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
-            <param name="controllerName">Name of the controller.</param>
-            <param name="actionName">Name of the action.</param>
-            <param name="parameterNames">The parameter names.</param>
-        </member>
-        <member name="M:RealWorld.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,RealWorld.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
-            <summary>
-            Creates a new <see cref="T:RealWorld.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:RealWorld.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
-            </summary>
-            <param name="mediaType">The media type.</param>
-            <param name="sampleDirection">The <see cref="P:RealWorld.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
-            <param name="controllerName">Name of the controller.</param>
-            <param name="actionName">Name of the action.</param>
-            <param name="parameterNames">The parameter names.</param>
-        </member>
-        <member name="P:RealWorld.Areas.HelpPage.HelpPageSampleKey.ControllerName">
-            <summary>
-            Gets the name of the controller.
-            </summary>
-            <value>
-            The name of the controller.
-            </value>
-        </member>
-        <member name="P:RealWorld.Areas.HelpPage.HelpPageSampleKey.ActionName">
-            <summary>
-            Gets the name of the action.
-            </summary>
-            <value>
-            The name of the action.
-            </value>
-        </member>
-        <member name="P:RealWorld.Areas.HelpPage.HelpPageSampleKey.MediaType">
-            <summary>
-            Gets the media type.
-            </summary>
-            <value>
-            The media type.
-            </value>
-        </member>
-        <member name="P:RealWorld.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
-            <summary>
-            Gets the parameter names.
-            </summary>
-        </member>
-        <member name="P:RealWorld.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
-            <summary>
-            Gets the <see cref="P:RealWorld.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
-            </summary>
-        </member>
-        <member name="T:RealWorld.Controllers.HomeController">
-            <summary>
-            The HTML based home page (resource)
-            </summary>
-        </member>
-        <member name="T:RealWorld.Areas.HelpPage.XmlDocumentationProvider">
-            <summary>
-            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
-            </summary>
-        </member>
-        <member name="M:RealWorld.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:RealWorld.Areas.HelpPage.XmlDocumentationProvider"/> class.
-            </summary>
-            <param name="documentPath">The physical path to XML document.</param>
-        </member>
-        <member name="T:RealWorld.Areas.HelpPage.InvalidSample">
-            <summary>
-            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
-            </summary>
-        </member>
-        <member name="T:RealWorld.Areas.Rest.Controllers.LoginWithLinksController">
-            <summary>
-            Entry point in the Web API application. Provides for authentication
-            and basic application information. Also, returns possible actions (links)
-            the client application (user agent) can trigger
-            </summary>
-        </member>
-        <member name="M:RealWorld.Areas.Rest.Controllers.LoginWithLinksController.Get">
-            <summary>
-            Entry point for the authentication process.
-            </summary>
-            <returns>An empty instance of the credential representation to be POSTed for authention with the appropriate URI</returns>
-        </member>
-        <member name="M:RealWorld.Areas.Rest.Controllers.LoginWithLinksController.Post(RealWorld.Areas.Rest.Models.LinkedCredentials)">
-            <summary>
-            Authentication end point to provide client application credentials
-            </summary>
-            <param name="credentials"></param>
-            <returns>HTTP Status 200 if credentials accepted and appropriate links for the next steps in the process or HTTP Status 401 if unathorized.</returns>
-        </member>
-        <member name="T:RealWorld.Areas.HelpPage.Models.HelpPageApiModel">
-            <summary>
-            The model that represents an API displayed on the help page.
-            </summary>
-        </member>
-        <member name="M:RealWorld.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:RealWorld.Areas.HelpPage.Models.HelpPageApiModel"/> class.
-            </summary>
-        </member>
-        <member name="P:RealWorld.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
-            <summary>
-            Gets or sets the <see cref="P:RealWorld.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
-            </summary>
-        </member>
-        <member name="P:RealWorld.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
-            <summary>
-            Gets the sample requests associated with the API.
-            </summary>
-        </member>
-        <member name="P:RealWorld.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
-            <summary>
-            Gets the sample responses associated with the API.
-            </summary>
-        </member>
-        <member name="P:RealWorld.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
-            <summary>
-            Gets the error messages associated with this model.
-            </summary>
-        </member>
-        <member name="M:RealWorld.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
-            <summary>
-            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
-            </summary>
-            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
-            <returns>The ID as a string.</returns>
         </member>
         <member name="M:RealWorld.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
             <summary>
@@ -373,122 +140,6 @@
             An <see cref="T:RealWorld.Areas.HelpPage.Models.HelpPageApiModel"/>
             </returns>
         </member>
-        <member name="T:RealWorld.Areas.Rest.Models.LinkedCredentials">
-            <summary>
-            The representation of the application credentials resource
-            </summary>
-        </member>
-        <member name="P:RealWorld.Areas.Rest.Models.LinkedCredentials.UserName">
-            <summary>
-            User name registered for use by this API
-            </summary>
-        </member>
-        <member name="P:RealWorld.Areas.Rest.Models.LinkedCredentials.Password">
-            <summary>
-            The user password
-            </summary>
-        </member>
-        <member name="P:RealWorld.Areas.Rest.Models.LinkedCredentials.Links">
-            <summary>
-            The list of links to the potential next steps for this user
-            </summary>
-        </member>
-        <member name="T:RealWorld.Areas.Api.Controllers.LoginController">
-            <summary>
-            Entry point in the Web API application. Provides for authentication
-            and basic application information
-            </summary>
-        </member>
-        <member name="M:RealWorld.Areas.Api.Controllers.LoginController.Get">
-            <summary>
-            Entry point for the authentication process.
-            </summary>
-            <returns>An empty instance of the credential representation to be POSTed for authention</returns>
-        </member>
-        <member name="M:RealWorld.Areas.Api.Controllers.LoginController.Post(RealWorld.Models.Credentials)">
-            <summary>
-            Authentication end point to provide client application credentials
-            </summary>
-            <param name="credentials"></param>
-            <returns>HTTP Status 200 if credentials accepted or HTTP Status 401 if unathorized</returns>
-        </member>
-        <member name="T:RealWorld.Areas.HelpPage.HelpPageConfig">
-            <summary>
-            Use this class to customize the Help Page.
-            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
-            or you can provide the samples for the requests/responses.
-            </summary>
-        </member>
-        <member name="T:RealWorld.Areas.HelpPage.TextSample">
-            <summary>
-            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
-            </summary>
-        </member>
-        <member name="T:RealWorld.Areas.Api.Controllers.SomeProcessController">
-            <summary>
-            Gets the status of the business process and provides static details
-            </summary>
-        </member>
-        <member name="T:RealWorld.Areas.HelpPage.SampleDirection">
-            <summary>
-            Indicates whether the sample is used for request or response
-            </summary>
-        </member>
-        <member name="T:RealWorld.Areas.HelpPage.ImageSample">
-            <summary>
-            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
-            </summary>
-        </member>
-        <member name="M:RealWorld.Areas.HelpPage.ImageSample.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:RealWorld.Areas.HelpPage.ImageSample"/> class.
-            </summary>
-            <param name="src">The URL of an image.</param>
-        </member>
-        <member name="T:RealWorld.Application.Cookies">
-            <summary>
-            Simple class to create authentication cookies. Provided as
-            a sample of how to implement cookie based authentication
-            using the ASP.NET Web API
-            </summary>
-        </member>
-        <member name="T:RealWorld.Application.WebAuthorize">
-            <summary>
-            Authorization logic for the ASP.NET Web API side of the application
-            </summary>
-        </member>
-        <member name="T:RealWorld.Application.ApiAuthorize">
-            <summary>
-            Authorization logic for the ASP.NET MVC 4 side of the application
-            </summary>
-        </member>
-        <!-- Badly formed XML comment ignored for member "T:RealWorld.WebApiApplication" -->
-        <member name="T:RealWorld.Areas.HelpPage.ObjectGenerator">
-            <summary>
-            This class will create an object of a given type and populate it with sample data.
-            </summary>
-        </member>
-        <member name="M:RealWorld.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
-            <summary>
-            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
-            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
-            Complex types: POCO types.
-            Nullables: <see cref="T:System.Nullable`1"/>.
-            Arrays: arrays of simple types or complex types.
-            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
-            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
-            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
-            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
-            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
-            </summary>
-            <param name="type">The type.</param>
-            <returns>An object of the given type.</returns>
-        </member>
-        <member name="T:RealWorld.Areas.HelpPage.Controllers.HelpController">
-            <summary>
-            The controller that will handle requests for the help page.
-            </summary>
-        </member>
         <member name="T:RealWorld.Areas.Rest.Models.AppLink">
             <summary>
             This is an example of a hypermedia "control" or affordance
@@ -512,6 +163,366 @@
         <member name="P:RealWorld.Areas.Rest.Models.AppLink.Description">
             <summary>
             Optional short description of the link relationship
+            </summary>
+        </member>
+        <member name="T:RealWorld.Areas.Rest.Controllers.SomeProcessWithLinksController">
+            <summary>
+            Gets the status of the business process and provides details
+            with access to the specific detail resources
+            </summary>
+        </member>
+        <member name="M:RealWorld.Areas.Rest.Controllers.SomeProcessWithLinksController.Get">
+            <summary>
+            Gets summary information for a business process
+            </summary>
+            <returns>The status and a list of detail links</returns>
+        </member>
+        <member name="T:RealWorld.Areas.Api.Controllers.SomeProcessController">
+            <summary>
+            Gets the status of the business process and provides static details
+            </summary>
+        </member>
+        <member name="M:RealWorld.Areas.Api.Controllers.SomeProcessController.Get">
+            <summary>
+            Gets summary information for a business process
+            </summary>
+        </member>
+        <member name="T:RealWorld.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:RealWorld.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:RealWorld.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:RealWorld.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:RealWorld.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:RealWorld.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:RealWorld.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:RealWorld.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:RealWorld.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:RealWorld.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:RealWorld.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:RealWorld.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:RealWorld.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="T:RealWorld.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:RealWorld.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:RealWorld.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:RealWorld.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:RealWorld.Application.Cookies">
+            <summary>
+            Simple class to create authentication cookies. Provided as
+            a sample of how to implement cookie based authentication
+            using the ASP.NET Web API
+            </summary>
+        </member>
+        <member name="T:RealWorld.Areas.Rest.Models.LinkedCredentials">
+            <summary>
+            The representation of the application credentials resource
+            </summary>
+        </member>
+        <member name="P:RealWorld.Areas.Rest.Models.LinkedCredentials.UserName">
+            <summary>
+            User name registered for use by this API
+            </summary>
+        </member>
+        <member name="P:RealWorld.Areas.Rest.Models.LinkedCredentials.Password">
+            <summary>
+            The user password
+            </summary>
+        </member>
+        <member name="P:RealWorld.Areas.Rest.Models.LinkedCredentials.Links">
+            <summary>
+            The list of links to the potential next steps for this user
+            </summary>
+        </member>
+        <member name="M:RealWorld.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:RealWorld.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:RealWorld.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="T:RealWorld.Areas.Rest.Controllers.LoginWithLinksController">
+            <summary>
+            Entry point in the Web API application. Provides for authentication
+            and basic application information. Also, returns possible actions (links)
+            the client application (user agent) can trigger
+            </summary>
+        </member>
+        <member name="M:RealWorld.Areas.Rest.Controllers.LoginWithLinksController.Get">
+            <summary>
+            Entry point for the authentication process.
+            </summary>
+            <returns>An empty instance of the credential representation to be POSTed for authention with the appropriate URI</returns>
+        </member>
+        <member name="M:RealWorld.Areas.Rest.Controllers.LoginWithLinksController.Post(RealWorld.Areas.Rest.Models.LinkedCredentials)">
+            <summary>
+            Authentication end point to provide client application credentials
+            </summary>
+            <param name="credentials"></param>
+            <returns>HTTP Status 200 if credentials accepted and appropriate links for the next steps in the process or HTTP Status 401 if unathorized.</returns>
+        </member>
+        <member name="T:RealWorld.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:RealWorld.WebApiApplication" -->
+        <member name="T:RealWorld.Areas.Api.Controllers.LoginController">
+            <summary>
+            Entry point in the Web API application. Provides for authentication
+            and basic application information
+            </summary>
+        </member>
+        <member name="M:RealWorld.Areas.Api.Controllers.LoginController.Get">
+            <summary>
+            Entry point for the authentication process.
+            </summary>
+            <returns>An empty instance of the credential representation to be POSTed for authention</returns>
+        </member>
+        <member name="M:RealWorld.Areas.Api.Controllers.LoginController.Post(RealWorld.Models.Credentials)">
+            <summary>
+            Authentication end point to provide client application credentials
+            </summary>
+            <param name="credentials"></param>
+            <returns>HTTP Status 200 if credentials accepted or HTTP Status 401 if unathorized</returns>
+        </member>
+        <member name="T:RealWorld.Controllers.HomeController">
+            <summary>
+            The HTML based home page (resource)
+            </summary>
+        </member>
+        <member name="T:RealWorld.Application.WebAuthorize">
+            <summary>
+            Authorization logic for the ASP.NET Web API side of the application
+            </summary>
+        </member>
+        <member name="T:RealWorld.Application.ApiAuthorize">
+            <summary>
+            Authorization logic for the ASP.NET MVC 4 side of the application
+            </summary>
+        </member>
+        <member name="T:RealWorld.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:RealWorld.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:RealWorld.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:RealWorld.Areas.HelpPage.HelpPageSampleKey.#ctor(RealWorld.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:RealWorld.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:RealWorld.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:RealWorld.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:RealWorld.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,RealWorld.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:RealWorld.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:RealWorld.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:RealWorld.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:RealWorld.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:RealWorld.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:RealWorld.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:RealWorld.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:RealWorld.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:RealWorld.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:RealWorld.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:RealWorld.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="M:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,RealWorld.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,RealWorld.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create one using <see cref="T:RealWorld.Areas.HelpPage.ObjectGenerator"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},RealWorld.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="P:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:RealWorld.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
             </summary>
         </member>
     </members>

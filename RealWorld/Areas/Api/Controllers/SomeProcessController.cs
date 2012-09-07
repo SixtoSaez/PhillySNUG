@@ -11,6 +11,9 @@ namespace RealWorld.Areas.Api.Controllers
     [ApiAuthorize]
     public class SomeProcessController : ApiController
     {
+        /// <summary>
+        /// Gets summary information for a business process
+        /// </summary>
         public BizProcessStatus Get()
         {
             return new BizProcessStatus

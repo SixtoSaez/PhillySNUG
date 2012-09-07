@@ -12,6 +12,10 @@ namespace RealWorld.Areas.Rest.Controllers
     [ApiAuthorize]
     public class SomeProcessWithLinksController : ApiController
     {
+        /// <summary>
+        /// Gets summary information for a business process
+        /// </summary>
+        /// <returns>The status and a list of detail links</returns>
         public LinkedBizProcessStatus Get()
         {
             return new LinkedBizProcessStatus

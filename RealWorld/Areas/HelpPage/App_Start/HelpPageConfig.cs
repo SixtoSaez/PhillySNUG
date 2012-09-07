@@ -4,6 +4,7 @@ using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
 using RealWorld.Areas.Rest.Models;
+using RealWorld.Models;
 
 namespace RealWorld.Areas.HelpPage
 {
@@ -38,6 +39,32 @@ namespace RealWorld.Areas.HelpPage
                 config,
                 (sample, mediaType) => config.SetSampleResponse(sample, mediaType, controller, action),
                 PostResponseLinkedCredentials());
+
+            controller = "Login";
+            action = "Post";
+            SetupSampleForControllerAction(
+                config,
+                (sample, mediaType) => config.SetSampleRequest(sample, mediaType, controller, action),
+                PostRequestCredentials());
+
+            SetupSampleForControllerAction(
+                config,
+                (sample, mediaType) => config.SetSampleResponse(sample, mediaType, controller, action),
+                PostResponseCredentials());
+
+            controller = "SomeProcess";
+            action = "Get";
+            SetupSampleForControllerAction(
+                config,
+                (sample, mediaType) => config.SetSampleResponse(sample, mediaType, controller, action),
+                GetResponseBizProcessStatus());
+
+            controller = "SomeProcessWithLinks";
+            action = "Get";
+            SetupSampleForControllerAction(
+                config,
+                (sample, mediaType) => config.SetSampleResponse(sample, mediaType, controller, action),
+                GetResponseLinkedBizProcessStatus());
         }
 
         private static void SetupSampleForControllerAction<T>(
@@ -91,6 +118,13 @@ namespace RealWorld.Areas.HelpPage
                                                    Href = "http://appDomain/api/orderhistory/john/{cutoffDate}",
                                                    Method = "GET",
                                                    Description = "Get order history through this cutoff date"
+                                               },
+                                           new AppLink
+                                               {
+                                                   Rel = "payment",
+                                                   Href = "https://appDomain/api/payments/john",
+                                                   Method = "GET",
+                                                   Description = "Start the payment process"
                                                }
 
                                        }
@@ -115,6 +149,56 @@ namespace RealWorld.Areas.HelpPage
                 Password = "aPassword",
                 Links = new AppLink[0]
             };
+        }
+
+        private static Credentials PostRequestCredentials()
+        {
+            return new Credentials
+            {
+                UserName = "John",
+                Password = "aPassword"
+            };
+        }
+
+        private static Credentials PostResponseCredentials()
+        {
+            return new Credentials
+            {
+                UserName = "John",
+                Password = "validatedToken"
+            };
+        }
+
+        private static BizProcessStatus GetResponseBizProcessStatus()
+        {
+            return new BizProcessStatus
+                       {
+                           Status = "All is good",
+                           ProcessingDetails = new[]
+                                                   {
+                                                       "One detail",
+                                                       "Two detail"
+                                                   }
+                       };
+        }
+
+        private static LinkedBizProcessStatus GetResponseLinkedBizProcessStatus()
+        {
+            return new LinkedBizProcessStatus
+                       {
+                           Status = "All is good",
+                           ProcessingDetails = new[]
+                                                   {
+                                                       new AppLink
+                                                           {
+                                                               Rel = "http://appDomain/schema/otherProcess",
+                                                               Href = "http://appDomain/api/orderProcess/john",
+                                                               Method = "GET",
+                                                               Description = "Get some other process info"
+                                                           },
+
+                                                   }
+                       };
         }
     }
 }
