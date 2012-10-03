@@ -1,9 +1,13 @@
 ﻿@model RealWorld.Models.Credentials
-
 @{
     ViewBag.Title = "Signed In";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>@Model.UserName is signed in</h2>
-<a href="~/SomeProcess">Start some process</a>
+<section class="featured">
+        <div class="content-wrapper">
+            <h2>@Model.UserName is signed in</h2>
+        </div>
+        </section>
+<section class="content-wrapper main-content clear-fix">
+        <a href="~/SomeProcess">Start some process</a>
+        </section>

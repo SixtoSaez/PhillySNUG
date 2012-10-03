@@ -8,7 +8,16 @@
     @Styles.Render("~/Content/Site.css", "~/Content/themes/base/css", "~/Content/css")
 </head>
 <body>
-    @RenderBody()
+    <header>
+        <div class="content-wrapper">       
+            <div class="float-left">
+                <p class="site-title"><a href="/">Real World Business App</a></p>
+            </div>
+        </div>
+    </header>
+    <div id="body">
+        @RenderBody()
+    </div>
     @Scripts.Render("~/Scripts/jquery")
     @Scripts.Render("~/Scripts/knockout")
     @Scripts.Render("~/Scripts/modernizr")

@@ -1,21 +1,10 @@
-<!DOCTYPE html>
 @model RealWorld.Models.Credentials
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>Real World App</title>
-    <meta name="viewport" content="width=device-width" />
-</head>
-<body>
-    <header>
-        <div class="content-wrapper">       
-            <div class="float-left">
-                <p class="site-title"><a href="/">Real World Business App</a></p>
-            </div>
-        </div>
-    </header>
-    <div id="body">
-        <section class="featured">
+<style>
+    .field { overflow: auto; margin-bottom: 20px; }
+    .field label { float: left; width: 100px; }
+    .field .field-subject { float: left; width: 200px; }
+</style>
+<section class="featured">
             <div class="content-wrapper">
                 <hgroup class="title">
                     <h1>Welcome to the Real World sample business app!</h1>
@@ -26,18 +15,23 @@
                 </p>
             </div>
         </section>
-        <section class="content-wrapper main-content clear-fix">
+<section class="content-wrapper main-content clear-fix">
             <h3>Please login to our application:</h3>
             <br/>
             @using (Html.BeginForm("SignedIn", "Home"))
             {
-                <ol class="round">
-                    <li>User Name: @Html.TextBox("UserName")</li>
-                    <li>Password: @Html.Password("Password")</li>
-                </ol>
+                <div class="field">
+                    @Html.Label("User Name:")
+                    <div class="field-subject">
+                        @Html.TextBox("UserName")
+                    </div>
+                </div>
+                <div class="field">
+                    @Html.Label("Password:")
+                    <div class="field-subject">
+                        @Html.Password("Password")
+                    </div>
+                </div>
                 <input type="submit" value="Sign In"/>
             }
         </section>
-    </div>
-</body>
-</html>
