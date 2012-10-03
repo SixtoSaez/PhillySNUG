@@ -29,16 +29,11 @@ namespace RealWorld.Application
             if (actionContext == null)
                 throw new ArgumentNullException("actionContext");
 
-            var request = actionContext.Request;
-            if (request.Properties.ContainsKey("MS_HttpContext"))
-            {
-                var httpContext = ((HttpContextWrapper)request.Properties["MS_HttpContext"]);
-                var authCookie = httpContext.Request.Cookies["AppAuthentication"];
+            var authCookie = actionContext.Request.Headers.GetCookies("AppAuthentication");
 
-                if (authCookie == null || authCookie.Value != "someSuperCoolEncryptedValue")
-                {
-                    HandleUnauthorizedRequest(actionContext);
-                }
+            if (authCookie == null || authCookie[0].Cookies[0].Value != "someSuperCoolEncryptedValue")
+            {
+                HandleUnauthorizedRequest(actionContext);
             }
         }
 
