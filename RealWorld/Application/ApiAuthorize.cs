@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Net;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 
 namespace RealWorld.Application
 {
     /// <summary>
-    /// Authorization logic for the ASP.NET MVC 4 side of the application
+    /// Authorization logic for the ASP.NET Web API side of the application
     /// </summary>
     public class ApiAuthorize : AuthorizeAttribute
     {
@@ -30,8 +29,16 @@ namespace RealWorld.Application
                 throw new ArgumentNullException("actionContext");
 
             var authCookie = actionContext.Request.Headers.GetCookies("AppAuthentication");
+            var cookieValue = authCookie == null
+                                  ? string.Empty
+                                  : authCookie.Count == 1
+                                        ? authCookie[0].Cookies.Count == 1
+                                              ? authCookie[0].Cookies[0].Value
+                                              : string.Empty
+                                        : string.Empty;
 
-            if (authCookie == null || authCookie[0].Cookies[0].Value != "someSuperCoolEncryptedValue")
+            //TODO: obviously, don't do this at work :)
+            if (cookieValue != "someSuperCoolEncryptedValue")
             {
                 HandleUnauthorizedRequest(actionContext);
             }

@@ -368,7 +368,7 @@
         </member>
         <member name="T:RealWorld.Application.ApiAuthorize">
             <summary>
-            Authorization logic for the ASP.NET MVC 4 side of the application
+            Authorization logic for the ASP.NET Web API side of the application
             </summary>
         </member>
         <member name="T:RealWorld.Areas.HelpPage.HelpPageSampleKey">
